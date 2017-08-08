@@ -158,6 +158,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Article.cs">
+      <DependentUpon>ArticleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArticleModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArticleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticleModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArticleModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +205,16 @@
     <Content Include="App_Data\UploaderDatabase.mdf" />
     <Content Include="App_Data\UploaderDatabase_log.ldf">
       <DependentUpon>UploaderDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="ArticleModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArticleModel.edmx</DependentUpon>
+      <LastGenOutput>ArticleModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ArticleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArticleModel.edmx</DependentUpon>
+      <LastGenOutput>ArticleModel.cs</LastGenOutput>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -217,6 +246,13 @@
     <Content Include="Models\UploaderModel.edmx.diagram">
       <DependentUpon>UploaderModel.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="ArticleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArticleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ArticleModel.edmx.diagram">
+      <DependentUpon>ArticleModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -246,8 +282,15 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\Delete.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

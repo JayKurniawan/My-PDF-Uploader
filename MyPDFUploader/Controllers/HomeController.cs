@@ -1,9 +1,12 @@
 ﻿using MyPDFUploader.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Configuration;
+using System.Data;
 
 namespace MyPDFUploader.Controllers
 {
@@ -56,7 +59,7 @@ namespace MyPDFUploader.Controllers
                 {
                     Session["UserId"] = details.FirstOrDefault().UserId;
                     Session["Username"] = details.FirstOrDefault().Username;
-                    return RedirectToAction("Welcome", "Home");
+                    return RedirectToAction("Create", "Articles");
                 }
             }else
             {
@@ -70,6 +73,7 @@ namespace MyPDFUploader.Controllers
         {
             return View();
         }
+
 
         public ActionResult About()
         {

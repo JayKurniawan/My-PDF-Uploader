@@ -3,5 +3,12 @@
     ViewBag.Title = "Welcome";
 }
 
-<h2>Welcome to your dashboard @Session["Username"].ToString()</h2>
+<h2>Welcome @Session["Username"].ToString()</h2>
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" name="file" id="file"/>
+    <input type="submit" value="Upload"/>
+}
+
 

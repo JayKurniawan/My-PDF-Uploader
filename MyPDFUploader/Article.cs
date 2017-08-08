@@ -11,11 +11,16 @@ namespace MyPDFUploader
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Article
     {
         public int FileId { get; set; }
+
+        [Required(AllowEmptyStrings =false,ErrorMessage = "Filename is required.")]
         public string FileName { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage ="Please select your file.")]
         public string File { get; set; }
     }
 }

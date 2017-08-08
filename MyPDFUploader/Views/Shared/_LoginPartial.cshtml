@@ -1,0 +1,41 @@
+﻿@if (Request.IsAuthenticated)
+
+{
+
+    using (Html.BeginForm("Login", "Home", FormMethod.Post))
+
+    {
+
+    @Html.AntiForgeryToken()
+
+
+
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>
+
+            @Html.ActionLink(@Session["Username"].ToString() + "!", "Welcome", "Home")
+
+        </li>
+
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+    </ul>
+
+    }
+
+}
+
+else
+
+{
+
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+
+        <li>@Html.ActionLink("Log in", "Login", "Home")</li>
+
+    </ul>
+
+}

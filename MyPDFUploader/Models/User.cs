@@ -11,12 +11,20 @@ namespace MyPDFUploader.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class User
     {
         public int UserId { get; set; }
+
+        [Required(AllowEmptyStrings =false, ErrorMessage ="Username is required.")]
         public string Username { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password is required.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Display(Name = "Admin")]
         public bool Role { get; set; }
     }
 }

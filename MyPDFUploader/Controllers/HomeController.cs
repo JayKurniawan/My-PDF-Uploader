@@ -21,19 +21,30 @@ namespace MyPDFUploader.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            User userModel = new User();
+            return View(userModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User userRegister) 
         {
-            if (ModelState.IsValid)
+            using(UploaderDatabaseEntities dbModel = new UploaderDatabaseEntities())
             {
-                db.Users.Add(userRegister);
-                db.SaveChanges();
+                if (dbModel.Users.Any(x => x.Username == userRegister.Username))
+                {
+                    ViewBag.UserExistMessage = "Username already exist.";
+                    return View("Register", userRegister);
+                }
+
+                dbModel.Users.Add(userRegister);
+                dbModel.SaveChanges();
             }
-            return View();
+
+            ModelState.Clear();
+            ViewBag.RegisterSuccessMessage = "Your registration is successful.";
+
+            return View("Register", new User());
         }
 
         public ActionResult Login()
@@ -60,11 +71,12 @@ namespace MyPDFUploader.Controllers
                     Session["Username"] = details.FirstOrDefault().Username;
                     return RedirectToAction("Create", "Articles");
                 }
-            }else
-            {
-                ModelState.AddModelError("", "Invalid data.");
+                else
+                {
+                    ViewBag.InvalidLoginMessage = "Username or password is incorrect.";
+                }
             }
-
+           
             return View(userLogin);
         }
 

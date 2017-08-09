@@ -57,7 +57,9 @@ namespace MyPDFUploader.Controllers
                 db.SaveChanges();
 
                 // after upload stay at the same page
-                return RedirectToAction("Create");
+                ViewBag.UploadSuccessMessage = "Upload successful.";
+                ModelState.Clear();
+                return View("Create");
             }
 
             return View(article);

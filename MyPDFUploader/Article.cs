@@ -17,10 +17,10 @@ namespace MyPDFUploader
     {
         public int FileId { get; set; }
 
-        [Required(AllowEmptyStrings =false,ErrorMessage = "Filename is required.")]
+        [Required(ErrorMessage ="Filename is required.")]
         public string FileName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage ="Please select your file.")]
+        [Required(ErrorMessage ="Please select your file.")]
         public string File { get; set; }
     }
 }
